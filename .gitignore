@@ -1,0 +1,3 @@
+*.egg-info/
+pip-wheel-metadata/
+.venv/
