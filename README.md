@@ -90,3 +90,16 @@ want to change it, add `--check`.
 ```bash
 make format-check
 ```
+
+## If this was a real application
+
+If this was a real application, the first thing I would change would be the data 
+storage system. Now, the application uses a limited in-memory system. For the
+majority of use cases the data source of truth has to be ACID. I would choose Postgres
+or MySQL as database backend.
+
+Next, I would add a queue system. The event system is synchronous and in the same
+thread. In the future, that could limit the scaling of the application. I would 
+integrate something like Redis or RabbitMQ, depending of the requirements, to
+process the events. Also, I would refactor the delivery system to deliver messages
+using events.
