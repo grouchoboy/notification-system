@@ -2,6 +2,14 @@
 
 Implementation of the coding exercise **Notification Simulator**.
 
+## System Dependencies
+
+The requirements are the followings:
+    
+  - Python 3.8 (I recommend the use of [pyenv](https://github.com/pyenv/pyenv) to manage multiple Python versions
+  - [Poetry](https://python-poetry.org/docs/)
+  - GNU Make
+
 ## Quickstart
 
 The dependencies are managed with [`poetry`](https://python-poetry.org/docs/).
@@ -30,6 +38,22 @@ pip install -e .
 
 # run the tests
 pytest
+```
+
+## Quickstart with Docker
+
+If you don't want to install the dependencies and you have Docker, it's possible
+to run the tests and the example script with Docker:
+
+```bash
+# build the image
+docker build -t notification_system . 
+
+# run the tests
+docker run notification_system poetry run pytest --cov
+
+# run the example script
+docker run --rm notification_system poetry run python example.py
 ```
 
 ## Execute a example run

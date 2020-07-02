@@ -3,12 +3,6 @@ from notification_system.message_delivery import DeliverySystem, PublishMessage
 from notification_system.models import MessageRepository, UserRepository
 
 
-def test_for_sewan_staff():
-    assert (
-        False
-    ), "The purpose of this test is to check if Sewan staff run the test suit"
-
-
 def test_register_users_and_publish_messages(
     user_repository: UserRepository,
     message_repository: MessageRepository,

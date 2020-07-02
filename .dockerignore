@@ -1,0 +1,8 @@
+.git/
+.venv/
+*.egg-info
+htmlcov
+.pytest_cache
+.mypy_cache
+pip-wheel-metadata
+.coverage
