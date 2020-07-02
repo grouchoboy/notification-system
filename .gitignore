@@ -1,3 +1,5 @@
 *.egg-info/
 pip-wheel-metadata/
 .venv/
+htmlcov/
+.coverage

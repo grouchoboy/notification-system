@@ -1,18 +1,17 @@
 # Notification System
 
+Implementation of the coding exercise **Notification Simulator**.
+
 ## Quickstart
 
-At the moment the project is empty, but you can install the development
-dependencies and run the tests to check that everything is OK.
-
-The dependencies are managed to [`poetry`](https://python-poetry.org/docs/).
+The dependencies are managed with [`poetry`](https://python-poetry.org/docs/).
 
 ```bash
 # Install the dependencies and the package itself in development mode
-poetry install
+make install
 
 # run the tests to check everything is ok
-poetry run pytest
+make test
 ```
 
 If you don't have `poetry` installed and don't want to install it, there
@@ -33,25 +32,37 @@ pip install -e .
 pytest
 ```
 
+## Execute a example run
+
+The file `example.py` contains the example run described in the exercise
+specification. You can execute the script with:
+
+```bash
+make example
+```
+
+The example creates 1000 users. It also creates and delivers 5 messages to all
+of the users. Simulation a loss ratio and an open ratio of the messages.
+
 ## Type check and formatting
 
 The project uses `mypy` to check for type errors. To check everything is
 correct, simple run:
 
 ```bash
-poetry run mypy notification_system tests
+make mypy
 ```
 
 `black` is used to format python code, we recommend format each file for
 separate, but if you want for format all the project, run:
 
 ```bash
-poetry run black notification_system tests
+make format
 ```
 
 If you only want to check that the code is well formatted, but you don't
 want to change it, add `--check`.
 
 ```bash
-poetry run black --check notification_system tests
+make format-check
 ```
