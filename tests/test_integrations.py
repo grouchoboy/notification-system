@@ -7,7 +7,6 @@ def test_register_users_and_publish_messages(
     user_repository: UserRepository,
     message_repository: MessageRepository,
     publish_message: PublishMessage,
-    listener: MessageReadListener,
 ):
     delivery_system = DeliverySystem(
         user_repository, message_repository, publish_message
@@ -28,3 +27,20 @@ def test_register_users_and_publish_messages(
     user2.read(message.id)
     assert 2 == len(message.has_been_opened_by)
     assert user2 in message.has_been_opened_by
+
+
+def test_read_two_times_the_same_message_counts_as_one(
+    user_repository: UserRepository,
+    message_repository: MessageRepository,
+    publish_message: PublishMessage,
+):
+    delivery_system = DeliverySystem(
+        user_repository, message_repository, publish_message
+    )
+    user = delivery_system.register_user("Harry")
+    message = delivery_system.deliver_message("Example")
+
+    user.read(message.id)
+    assert 1 == len(message.has_been_opened_by)
+    user.read(message.id)
+    assert 1 == len(message.has_been_opened_by)

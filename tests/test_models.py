@@ -1,6 +1,6 @@
 from uuid import uuid4
 
-from notification_system.models import Message, User, UserRepository
+from notification_system.models import Inbox, Message, User, UserRepository
 
 
 def test_add_user(user_repository: UserRepository):
@@ -42,3 +42,11 @@ def test_message_stats(message: Message):
     assert "0.80" == stats["received_ratio"]
     assert 4 == stats["opened"]
     assert "0.50" == stats["opened_ratio"]
+
+
+def test_inbox_read(message):
+    inbox = Inbox()
+    inbox.add(message)
+    assert 1 == len(inbox)
+    assert inbox.read(message.id)
+    assert not inbox.read(message.id)

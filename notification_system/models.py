@@ -94,7 +94,7 @@ class Inbox:
 
     def read(self, message_id: UUID) -> bool:
         for item in self.items:
-            if item.message.id == message_id:
+            if item.message.id == message_id and not item.read:
                 item.read = True
                 return True
         return False
